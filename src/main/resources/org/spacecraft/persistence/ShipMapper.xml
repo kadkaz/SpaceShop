@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.spacecraft.persistence.ShipMapper">
+
+  <cache />
+
+  <select id="getById" parameterType="int" resultType="Ship">
+    SELECT *
+    FROM SHIPS
+    WHERE ID = #{id}
+  </select>
+
+  <select id="getShips" parameterType="java.util.Map" resultType="java.util.Collection">
+    <![CDATA[
+        SELECT *
+        FROM SHIPS
+        ORDER BY NAME
+        LIMIT #{param2} OFFSET #{param1}
+    ]]>
+  </select>
+
+  <select id="count" resultType="long">
+    SELECT count(*) from SHIPS
+  </select>
+
+</mapper>
