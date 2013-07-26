@@ -13,6 +13,18 @@ public class Ship {
     @JsonProperty
     private String name;
 
+    public Ship() {
+    }
+
+    public Ship(String name) {
+        this.name = name;
+    }
+
+    public Ship(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

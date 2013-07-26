@@ -28,9 +28,11 @@ var ShipGrid = Backgrid.Grid.extend({
 
         options.columns = [{
             name: "name", label: 'Name', editable: false,
-            cell: Backgrid.StringCell
+            cell: Backgrid.StringCell,
+            headerCell: Backgrid.HeaderCell
         }]
 
+        options.domain = Ship
         options.collection = ships
 
         this.constructor.__super__.initialize.apply(this, [options])

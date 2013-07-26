@@ -35,6 +35,6 @@ public class ShipController {
     @ResponseBody
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Collection<Ship> getShips(@RequestParam long page, @RequestParam(value = "per_page") int perPage) {
-        return shipMapper.getShips(page, perPage);
+        return shipMapper.getShips(page * perPage, perPage);
     }
 }
