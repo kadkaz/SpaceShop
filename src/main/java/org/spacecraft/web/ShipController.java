@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -19,6 +18,20 @@ public class ShipController {
 
     @Autowired
     private ShipMapper shipMapper;
+
+    @ResponseBody
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public boolean update(@RequestBody Ship ship) {
+        shipMapper.update(ship);
+        return true;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@RequestParam long id) {
+        shipMapper.delete(id);
+        return true;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

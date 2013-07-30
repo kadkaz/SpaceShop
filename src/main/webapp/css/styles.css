@@ -1,0 +1,12 @@
+td.menu {
+    width: 50px;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.pagination ul {
+    margin: 0 auto;
+    display: table;
+}
