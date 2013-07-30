@@ -13,7 +13,7 @@ The project demonstrates interaction between technologies:
 * After go to browser and look at url:
     * http://localhost:7070
 
-Backgound
+Background
 =========
 
 The site is the Space Shop where users can build ships.
