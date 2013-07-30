@@ -38,7 +38,7 @@
     <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
         <property name="prefixJson" value="false"/>
         <property name="supportedMediaTypes" value="application/json"/>
-        <!--<property name="objectMapper" ref="objectMapper"/>-->
+        <property name="objectMapper" ref="objectMapper"/>
     </bean>
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -46,6 +46,9 @@
             <util:list id="beanList">
                 <ref bean="jsonHttpMessageConverter"/>
             </util:list>
+        </property>
+        <property name="webBindingInitializer">
+            <bean class="org.spacecraft.web.GlobalBindingInitializer"/>
         </property>
     </bean>
 

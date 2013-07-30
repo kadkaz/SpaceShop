@@ -8,6 +8,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
  */
 public class Ship {
 
+    public static enum SortField {
+        NAME
+    }
+
     @JsonProperty
     private Long id;
     @JsonProperty

@@ -14,9 +14,10 @@ import java.util.Collection;
 public interface ShipMapper {
 
     @Select("SELECT * FROM SHIPS " +
-            "ORDER BY NAME " +
+            "ORDER BY ${sortField} ${order} " +
             "LIMIT #{perPage} OFFSET #{offset} ")
-    Collection<Ship> getShips(@Param("offset") long offset, @Param("perPage") int perPage);
+    Collection<Ship> getShips(@Param("offset") long offset, @Param("perPage") int perPage,
+                              @Param("sortField") Ship.SortField sortField, @Param("order") Order order);
 
     @Select("SELECT * FROM SHIPS WHERE ID = #{id}")
     Ship getById(long id);

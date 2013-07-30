@@ -72,14 +72,34 @@ public class ShipMapperTest {
         assertEquals(11, shipMapper.count());
 
         // When get first page = 0
-        Collection<Ship> ships = shipMapper.getShips(0, perPage);
+        Collection<Ship> ships = shipMapper.getShips(0, perPage, Ship.SortField.NAME, Order.ASC);
         // Then it is 10
         assertEquals(perPage, ships.size());
 
         // When get the second page
-        ships = shipMapper.getShips(perPage, perPage);
+        ships = shipMapper.getShips(perPage, perPage, Ship.SortField.NAME, Order.ASC);
         // Then it is 1
         assertEquals(1, ships.size());
+    }
+
+    @Test
+    public void sortingTest() {
+        //Given sorting fields
+        Ship.SortField[] fields = Ship.SortField.values();
+        int perPage = 10;
+
+        // When apply sorting for every fields and order
+        for (Ship.SortField sortBy : fields) {
+            Collection<Ship> ships = shipMapper.getShips(0, perPage, sortBy, Order.ASC);
+            // then the size the same like requested
+            assertEquals(perPage, ships.size());
+
+            ships = shipMapper.getShips(0, perPage, sortBy, Order.DESC);
+            // then order does not change the result
+            assertEquals(perPage, ships.size());
+        }
+
+        // Then no exceptions
     }
 
     @Test
