@@ -2,43 +2,29 @@ package org.spacecraft.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import java.util.List;
-
 /**
  * @author Anton Pashkin
  * @version 1.0 2013/07/23
  */
-public class Ship {
-
-    public static enum SortField {
-        NAME
-    }
+public class PassengerDTO {
 
     @JsonProperty
     private Long id;
     @JsonProperty
     private String name;
 
-    private List<PassengerDTO> passengers;
+    private Ship ship;
 
-    public Ship() {
+    public PassengerDTO() {
     }
 
-    public Ship(String name) {
+    public PassengerDTO(String name) {
         this.name = name;
     }
 
-    public Ship(Long id, String name) {
+    public PassengerDTO(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public List<PassengerDTO> getPassengers() {
-        return passengers;
-    }
-
-    public void setPassengers(List<PassengerDTO> passengers) {
-        this.passengers = passengers;
     }
 
     public Long getId() {
@@ -55,5 +41,13 @@ public class Ship {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Ship getShip() {
+        return ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
 }
